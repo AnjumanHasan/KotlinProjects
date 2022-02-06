@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity()  {
     lateinit var bill : EditText
     lateinit var tipText : TextView
     lateinit var tip :TextView
-    lateinit var total :TextView
+    lateinit var totalValue :TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity()  {
             bill= findViewById(R.id.billTotal)
             tipText = findViewById(R.id.textTip)
             tip = findViewById(R.id.tipValue)
-            total  =findViewById(R.id.tipValue)
+            totalValue  =findViewById(R.id.totalValue)
 
         seekBar.progress = initialTip
         tipText.text ="$initialTip%"
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity()  {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 tipText.text = "$p1%"
 
-
+                computeTipandTotal()
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {}
@@ -55,12 +55,21 @@ class MainActivity : AppCompatActivity()  {
     }
 
     private fun computeTipandTotal() {
-        val amount = bill.text.toString().toDouble()
-        val tip = seekBar.progress
+        if (bill.text.isEmpty())
+            {
+            tip.text=""
+                totalValue.text =""
+                return
+            }
 
-        val tipValue= amount*tip/100
+        val amount = bill.text.toString().toDouble()
+        val tipamount = seekBar.progress
+
+        val tipValue= amount*tipamount/100
         val total = amount + tipValue
-        
+
+        tip.text = "%.2f".format(tipValue)
+        totalValue.text = "%.2f".format(total)
     }
 
 
