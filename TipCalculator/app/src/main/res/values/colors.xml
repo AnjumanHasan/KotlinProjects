@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="munsell_blue">#568ea3</color>
+    <color name="middle_blue">#68C3D4</color>
+    <color name="grey">#B8B8B8</color>
+
+    <color name="poorTip">#B02E0C</color>
+    <color name="averageTip">#545E75</color>
+    <color name="goodTip">#3A6EA5</color>
+    <color name="amazingTip">#71F79F</color>
 </resources>
