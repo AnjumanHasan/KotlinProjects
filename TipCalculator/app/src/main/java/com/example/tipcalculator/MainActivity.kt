@@ -1,5 +1,6 @@
 package com.example.tipcalculator
 
+import android.animation.ArgbEvaluator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -7,8 +8,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
-import java.util.*
-import android.view.View
+import androidx.core.content.ContextCompat
 
 private val initialTip = 0
 class MainActivity : AppCompatActivity()  {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity()  {
     lateinit var tipText : TextView
     lateinit var tip :TextView
     lateinit var totalValue :TextView
-
+    lateinit var tipDescription : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,14 +27,17 @@ class MainActivity : AppCompatActivity()  {
             tipText = findViewById(R.id.textTip)
             tip = findViewById(R.id.tipValue)
             totalValue  =findViewById(R.id.totalValue)
+        tipDescription= findViewById(R.id.tipDescription)
 
         seekBar.progress = initialTip
         tipText.text ="$initialTip%"
+        tipDescription.text = ""
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 tipText.text = "$p1%"
 
                 computeTipandTotal()
+                setTipDescription(p1)
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {}
@@ -49,9 +52,27 @@ class MainActivity : AppCompatActivity()  {
 
             override fun afterTextChanged(p0: Editable?) {
              computeTipandTotal()
+
             }
 
         })
+    }
+
+    private fun setTipDescription(p1: Int) {
+       val message = when(p1)
+       {
+           in 0..10 -> "Poor!"
+           in 11..20 -> "Average!"
+           in 21..30 -> "Good!"
+           else -> "Amazing!"
+       }
+        tipDescription.text = message
+        val color =ArgbEvaluator().evaluate(
+            p1.toFloat()/seekBar.max,
+            ContextCompat.getColor(this,R.color.poorTip),
+            ContextCompat.getColor(this,R.color.amazingTip)
+        ) as Int
+        tipDescription.setTextColor(color)
     }
 
     private fun computeTipandTotal() {

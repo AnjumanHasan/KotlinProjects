@@ -80,14 +80,14 @@
 
     <TextView
         android:id="@+id/totalValue"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Rs 0.00"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/tipValue"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textTotal"
         app:layout_constraintTop_toBottomOf="@+id/tipValue" />
 
@@ -118,4 +118,15 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTotal" />
+
+    <TextView
+        android:id="@+id/tipDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalValue" />
 </androidx.constraintlayout.widget.ConstraintLayout>
