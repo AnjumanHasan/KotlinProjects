@@ -1,10 +1,12 @@
 package com.example.tipcalculator
 
 import android.animation.ArgbEvaluator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Button
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity()  {
     lateinit var tip :TextView
     lateinit var totalValue :TextView
     lateinit var tipDescription : TextView
+    lateinit var splitButton : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,10 +31,15 @@ class MainActivity : AppCompatActivity()  {
             tip = findViewById(R.id.tipValue)
             totalValue  =findViewById(R.id.totalValue)
         tipDescription= findViewById(R.id.tipDescription)
-
+        splitButton = findViewById(R.id.splitButton)
         seekBar.progress = initialTip
         tipText.text ="$initialTip%"
         tipDescription.text = ""
+
+            splitButton.setOnClickListener{
+                val intent = Intent(this,SplitPage :: class.java);
+                startActivity(intent)
+            }
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 tipText.text = "$p1%"
