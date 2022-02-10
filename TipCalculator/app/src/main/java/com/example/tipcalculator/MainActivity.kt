@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 private val initialTip = 0
-class MainActivity : AppCompatActivity()  {
+ class MainActivity : AppCompatActivity()  {
     lateinit var seekBar :SeekBar
     lateinit var bill : EditText
     lateinit var tipText : TextView
@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity()  {
 
             splitButton.setOnClickListener{
                 val intent = Intent(this,SplitPage :: class.java);
+                val value = totalValue.text.toString()
+                intent.putExtra("message_key",value)
                 startActivity(intent)
             }
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
