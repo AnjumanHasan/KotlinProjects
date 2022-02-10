@@ -19,13 +19,19 @@ class SplitPage : AppCompatActivity()  {
         setContentView(R.layout.activity_split_page)
         splitButton=findViewById(R.id.finalSplit)
         splitIn = findViewById(R.id.splitIn)
-        bill=findViewById(R.id.totalValue)
+        splitShare=findViewById(R.id.splitShare)
 
-        var value : Float = bill.text.toString().toFloat()/splitIn.text.toString().toFloat()
+        var bill : String? = intent.getStringExtra("value")
+
+
+
 
         splitButton.setOnClickListener {
-            splitShare.text="%.2f".format(value)
+            val value = bill.toString().toFloat()/splitIn.text.toString().toFloat()
+                    splitShare.text="%.2f".format(value)
         }
     }
 }
+
+
 

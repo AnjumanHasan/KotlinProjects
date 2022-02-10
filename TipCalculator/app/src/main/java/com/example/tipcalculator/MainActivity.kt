@@ -39,7 +39,7 @@ private val initialTip = 0
             splitButton.setOnClickListener{
                 val intent = Intent(this,SplitPage :: class.java);
                 val value = totalValue.text.toString()
-                intent.putExtra("message_key",value)
+                intent.putExtra("value",value)
                 startActivity(intent)
             }
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
