@@ -1,9 +1,12 @@
 package kotlinprojects.matchinggame
 
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import kotlinprojects.matchinggame.R.drawable.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,16 +30,24 @@ class MainActivity : AppCompatActivity() {
             cottoncandy,cupcake,donut,icecream,pancake,pudding)
         val buttons : Array<ImageButton> = arrayOf(button1,button2,button3,button4,button5,button6,button7,button8,
         button9,button10,button11,button12)
+        val cardBack : Int = help
 
         images.shuffle()
+        for (i in 0..11) {
+
+            buttons[i].textDirection = 1
+        }
         for (i in 0..11)
         {
-           // buttons[i].setImageResource(cottoncandy)
-            buttons[i].textDirection = 1
             buttons[i].setOnClickListener{
                 if (buttons[i].textDirection == 1)
                 {
                     buttons[i].setImageResource(images[i])
+                    buttons[i].textDirection = 0
+                }
+                else if (buttons[i].textDirection != 1)
+                {
+                    buttons[i].setImageResource(cardBack)
                 }
             }
         }
