@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/HP/AndroidStudioProjects/KotlinProjects/MatchingGame/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/KotlinProjects/MatchingGame/app/src/main/res/drawable/cupcake.xml" value="0.34269662921348315" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/KotlinProjects/MatchingGame/app/src/main/res/drawable/helpback.xml" value="0.34269662921348315" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/KotlinProjects/MatchingGame/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
   </component>
